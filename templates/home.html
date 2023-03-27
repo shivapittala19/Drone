@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h2>Welcome, {{ user.username }}!</h2>
+    <h3>Available Locations:</h3>
+    <ul>
+      {% for location in locations %}
+        <li><a href="{% url 'add_drone' location.id %}">{{ location.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>Welcome to Drone Videography Services!</h2>
+    <p>Please log in or register to access our services.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ location.name }}</h1>
+  <p>{{ location.address }}</p>
+  <form method="post" action="{% url 'drone' location.id %}">
+    {% csrf_token %}
+    <label for="drone_shot_id">Drone Shot :</label>
+    <select name="drone_shot_id">
+      {% for drone_shot in drone_shots %}
+        <option value="{{ drone_shot.id }}">{{ drone_shot.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="created_time">Booking Time:</label>
+    <input type="datetime-local" id="created_time" name="created_time">
+    <br>
+    <input type="submit" value="Book Drone">
+  </form>
+{% endblock %}

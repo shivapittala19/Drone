@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Location</h2>
+  <p>Are you sure you want to delete {{ location.name }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes</button>
+    <a href="{% url 'home' %}">No, go back</a>
+  </form>
+{% endblock %}
